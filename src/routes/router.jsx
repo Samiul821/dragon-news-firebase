@@ -3,6 +3,9 @@ import HomeLayout from "../layouts/HomeLayout";
 import CategoryNews from "../pages/CategoryNews";
 import Home from "../pages/Home";
 import ErrorPage from "../components/Error";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import AuthLayout from "../layouts/AuthLayout";
 
 const router = createBrowserRouter([
   {
@@ -23,16 +26,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth",
-    element: <h2>Authentication Layout</h2>,
+    element: <AuthLayout></AuthLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/auth/register",
+        element: <Register></Register>
+      }
+    ]
   },
   {
     path: "/news",
     element: <h2>News Layout</h2>,
   },
-  // {
-  //   path: "/*",
-  //   element: <h2>Error404</h2>,
-  // },
 ]);
 
 export default router;

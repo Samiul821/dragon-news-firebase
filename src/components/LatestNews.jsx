@@ -11,10 +11,12 @@ const LatestNews = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
           accusantium?
         </p>
+
         <p className="font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
           accusantium?
         </p>
+
         <p className="font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
           accusantium?

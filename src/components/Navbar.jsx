@@ -1,10 +1,24 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import user from "../assets/user.png";
+import userImg from "../assets/user.png";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = use(AuthContext);
+
+  const handleLogout = () => {
+    console.log('user trying to logout');
+    logOut()
+    .then(() => {
+      alert("Logout successful.")
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
   return (
     <div className="navbar">
+      <div>{user && user.email}</div>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -54,8 +68,11 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end space-x-2.5">
-        <img src={user} alt="" />
-        <Link to="/auth/login" className="btn btn-primary px-8">Login</Link>
+        <img src={userImg} alt="" />
+        { 
+          user ? <button onClick={handleLogout} className="btn btn-primary px-8">Logout</button> : <Link to="/auth/login" className="btn btn-primary px-8">Login</Link>
+        }
+        
       </div>
     </div>
   );

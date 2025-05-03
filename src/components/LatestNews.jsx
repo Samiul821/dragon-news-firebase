@@ -8,18 +8,7 @@ const LatestNews = () => {
 
       <Marquee className="flex gap-5" pauseOnHover={true} speed={60}>
         <p className="font-semibold">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-          accusantium?
-        </p>
-
-        <p className="font-semibold">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-          accusantium?
-        </p>
-
-        <p className="font-semibold">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-          accusantium?
+        বিদ্যুৎ বিভ্রাটে অচল রাজধানী: গরমে জনদুর্ভোগ চরমে, হাসপাতাল-কলকারখানায় কাজ বন্ধ, লোডশেডিং পরিস্থিতি নিয়ন্ত্রণে জরুরি বৈঠক ডেকেছে সরকার, তবে স্বাভাবিক অবস্থায় ফিরতে সময় লাগবে আরও ৪৮ ঘণ্টা, জানাল বিদ্যুৎ বিভাগ।
         </p>
       </Marquee>
     </div>

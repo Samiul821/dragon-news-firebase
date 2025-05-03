@@ -18,8 +18,8 @@ const Navbar = () => {
   }
   return (
     <div className="navbar">
-      <div className="flex items-center">
-        <h2 className="text-2xl font-semibold">{user && user.displayName}</h2>
+      <div className="text-lg font-semibold">
+      {user && user.email}
       </div>
       <div className="navbar-start">
         <div className="dropdown">

@@ -3,9 +3,12 @@ import app from "../firebase/firebase.config.js";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -13,6 +16,8 @@ import {
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,6 +43,14 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   }
 
+  const googleSignIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  }
+
+  const githubSignIn = () => {
+    return signInWithPopup(auth, githubProvider);
+  }
+
   const logOut = () => {
     return signOut(auth);
   }
@@ -61,7 +74,9 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     updateUser,
-    forgetPassword
+    forgetPassword,
+    googleSignIn,
+    githubSignIn
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

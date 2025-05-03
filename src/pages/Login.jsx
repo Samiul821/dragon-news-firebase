@@ -1,12 +1,13 @@
-import React, { use, useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { loginUser } = use(AuthContext);
+  const { loginUser, forgetPassword } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const emailRef = useRef();
   // console.log(location);
 
   const handleLogin = (e) => {
@@ -19,15 +20,30 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
-        navigate(`${location.state? location.state : "/"}`)
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         const errorCode = error.code;
         // const errorMessage = error.message;
         // alert(errorCode, errorMessage);
-        setError(errorCode)
-      });
+        setError(errorCode);
+      });   
   };
+
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    console.log(email);
+    forgetPassword(email)
+      .then(() => {
+        alert("Password reset email sent!");
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // alert(errorCode, errorMessage);
+        setError(error.message);
+      });
+  }
 
   return (
     <div className="flex justify-center min-h-screen items-center">
@@ -42,6 +58,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              ref={emailRef}
               className="input"
               placeholder="Email"
               required
@@ -55,7 +72,7 @@ const Login = () => {
               placeholder="Password"
               required
             />
-            <div>
+            <div onClick={handleForgetPassword}>
               <a className="link link-hover">Forgot password?</a>
             </div>
 

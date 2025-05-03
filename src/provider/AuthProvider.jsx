@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -32,6 +33,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  const forgetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  }
+
   const logOut = () => {
     return signOut(auth);
   }
@@ -54,7 +60,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     loading,
     setLoading,
-    updateUser
+    updateUser,
+    forgetPassword
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

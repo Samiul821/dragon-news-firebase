@@ -18,7 +18,9 @@ const Navbar = () => {
   }
   return (
     <div className="navbar">
-      <div>{user && user.email}</div>
+      <div className="flex items-center">
+        <h2 className="text-2xl font-semibold">{user && user.displayName}</h2>
+      </div>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -68,7 +70,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end space-x-2.5">
-        <img src={userImg} alt="" />
+        <img className="w-13 rounded-full" src={`${user ? user.photoURL : userImg}`} alt="" />
         { 
           user ? <button onClick={handleLogout} className="btn btn-primary px-8">Logout</button> : <Link to="/auth/login" className="btn btn-primary px-8">Login</Link>
         }

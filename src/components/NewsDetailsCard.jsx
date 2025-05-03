@@ -6,7 +6,7 @@ const NewsDetailsCard = ({news}) => {
     const {thumbnail_url, title, details} = news;
 
     return (
-        <div className='p-7 border-2 border-base-300 rounded-lg shadow'>
+        <div className='p-7 border-1 border-base-300 rounded-lg shadow'>
             <img className='rounded-lg mb-5 w-full object-cover h-[600px]' src={thumbnail_url} alt={title} />
             <h2 className='text-2xl font-bold mb-2'>{title}</h2>
             <p className='text-accent mb-8'>{details}</p>

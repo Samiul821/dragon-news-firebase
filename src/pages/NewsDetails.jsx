@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import RighAside from '../components/homelayout/RighAside';
+import RighAside from '../components/homelayout/RightAside';
 import NewsDetailsCard from '../components/NewsDetailsCard';
 import { useLoaderData, useParams } from 'react-router';
+import RightAside from '../components/homelayout/RightAside';
 
 const NewsDetails = () => {
     const data = useLoaderData();
@@ -27,7 +28,7 @@ const NewsDetails = () => {
                 <NewsDetailsCard news={news}></NewsDetailsCard>
                </section>
                <aside className='col-span-3'>
-                <RighAside></RighAside>
+                <RightAside></RightAside>
                </aside>
             </main>
         </div>
